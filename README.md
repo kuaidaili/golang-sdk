@@ -1,4 +1,4 @@
-# 快代理官方帮助中心代码样例-Golang部分
+# 快代理SDK - Golang
 
 ## 调用API
 ### api.go
