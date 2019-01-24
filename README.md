@@ -1,21 +1,23 @@
 # 快代理官方帮助中心代码样例-Golang部分
 
 ## 调用API
-| 文件 | 说明 | 使用提示 |
-| --- | --- | --- |
-| api.go | 使用标准库调用api链接并解析返回内容示例 | |
+### api.go
+使用标准库调用api链接并解析返回内容示例
 
 ## Http代理
-| 文件 | 说明 | 使用提示 | 
-| --- | --- | --- |
-| http.go | 使用标准库请求Http代理服务器, 请求http和https网页均适用 | |
+### http.go
+使用标准库请求Http代理服务器, 请求http和https网页均适用
 
 ## Socks代理
-| 文件 | 说明 | 使用提示 |
-| --- | --- | --- |
-| socks_auth.go | 以`用户名密码`认证形式使用`golang.org/x/net`包请求Socks代理服务器, 请求http和https网页均适用 |  |
-| socks_whitelist.go | 以`白名单`认证形式使用`golang.org/x/net`包请求Socks代理服务器, 请求http和https网页均适用 | 请先获取官方net包: `go get golang.org/x/net` |
+### socks_auth.go
+以`用户名密码`认证形式使用`golang.org/x/net`包请求Socks代理服务器, 请求http和https网页均适用
 
+### socks_whitelist.go
+以`白名单`认证形式使用`golang.org/x/net`包请求Socks代理服务器, 请求http和https网页均适用
+```
+使用提示：
+请先获取官方net包: go get golang.org/x/net
+```
 
 ## 技术支持
 
