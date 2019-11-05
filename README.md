@@ -19,6 +19,11 @@
 请先获取官方net包: go get golang.org/x/net
 ```
 
+## 隧道代理
+### tps.go
+以`用户名密码`使用标准库请求Http代理服务器, 请求http和https网页均适用
+
+
 ## 技术支持
 
 如果您发现代码有任何问题, 请提交`Issue`。
