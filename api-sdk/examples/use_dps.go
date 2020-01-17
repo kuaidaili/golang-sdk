@@ -2,10 +2,11 @@ package examples
 
 import (
 	"fmt"
-	"kdl/auth"
-	"kdl/client"
-	"kdl/signtype"
 	"log"
+
+	"github.com/kuaidaili/golang-sdk/api-sdk/kdl/auth"
+	"github.com/kuaidaili/golang-sdk/api-sdk/kdl/client"
+	"github.com/kuaidaili/golang-sdk/api-sdk/kdl/signtype"
 )
 
 // 私密代理使用示例

@@ -2,10 +2,11 @@ package tests
 
 import (
 	"fmt"
-	"kdl/auth"
-	"kdl/client"
-	"kdl/signtype"
 	"testing"
+
+	"github.com/kuaidaili/golang-sdk/api-sdk/kdl/auth"
+	"github.com/kuaidaili/golang-sdk/api-sdk/kdl/client"
+	"github.com/kuaidaili/golang-sdk/api-sdk/kdl/signtype"
 )
 
 var dpsAuth = auth.Auth{OrderID: "test_order_id", APIKey: "test_api_key"}

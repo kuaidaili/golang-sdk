@@ -4,9 +4,10 @@ import (
 	"crypto/hmac"
 	"crypto/sha1"
 	"encoding/base64"
-	"kdl/utils"
 	"sort"
 	"strings"
+
+	"github.com/kuaidaili/golang-sdk/api-sdk/kdl/utils"
 )
 
 // Auth 用于保存用户orderid、apiKey，以及计算签名

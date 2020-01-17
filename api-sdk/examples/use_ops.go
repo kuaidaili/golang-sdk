@@ -2,11 +2,12 @@ package examples
 
 import (
 	"fmt"
-	"kdl/auth"
-	"kdl/client"
-	"kdl/opslevel"
-	"kdl/signtype"
 	"log"
+
+	"github.com/kuaidaili/golang-sdk/api-sdk/kdl/auth"
+	"github.com/kuaidaili/golang-sdk/api-sdk/kdl/client"
+	"github.com/kuaidaili/golang-sdk/api-sdk/kdl/opslevel"
+	"github.com/kuaidaili/golang-sdk/api-sdk/kdl/signtype"
 )
 
 // 开放代理使用示例

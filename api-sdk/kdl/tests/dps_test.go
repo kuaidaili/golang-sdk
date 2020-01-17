@@ -2,8 +2,9 @@ package tests
 
 import (
 	"fmt"
-	"kdl/signtype"
 	"testing"
+
+	"github.com/kuaidaili/golang-sdk/api-sdk/kdl/signtype"
 )
 
 func TestGetDps(t *testing.T) {

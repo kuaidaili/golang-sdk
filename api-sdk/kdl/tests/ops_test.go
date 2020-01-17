@@ -2,10 +2,11 @@ package tests
 
 import (
 	"fmt"
-	"kdl/opslevel"
-	"kdl/signtype"
 	"strings"
 	"testing"
+
+	"github.com/kuaidaili/golang-sdk/api-sdk/kdl/opslevel"
+	"github.com/kuaidaili/golang-sdk/api-sdk/kdl/signtype"
 )
 
 func TestGetProxy(t *testing.T) {

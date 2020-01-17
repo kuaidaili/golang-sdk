@@ -1,6 +1,6 @@
 package client
 
-import "kdl/auth"
+import "github.com/kuaidaili/golang-sdk/api-sdk/kdl/auth"
 
 // Client 请求客户端
 type Client struct {
