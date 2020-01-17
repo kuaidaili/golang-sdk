@@ -1,8 +1,7 @@
-# 快代理SDK - Golang
+# 快代理API SDK - Golang
+通过SDK可快速调用API接口，[查看详情](https://github.com/kuaidaili/golang-sdk/tree/master/api-sdk)
 
-## 快代理API-SDK - Go
-
-[快代理GO-API-SDK](https://github.com/kuaidaili/golang-sdk/tree/master/go-api-sdk)
+# 快代理官方代码样例 - Golang
 
 ## 调用API
 ### api.go
