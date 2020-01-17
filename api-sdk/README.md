@@ -12,7 +12,7 @@
 ## 通过go get安装(推荐)
 您可以通过`go get`将SDK安装到您的`GOPATH`中：
 ```
-go get github.com/kuaidaili/golang-sdk/api-sdk
+go get github.com/kuaidaili/golang-sdk/tree/master/go-api-sdk
 ```
 
 ## 通过源码包安装

@@ -2,7 +2,7 @@
 
 ## 快代理API-SDK - Go
 
-[快代理GO-API-SDK](https://github.com/kuaidaili/golang-sdk/go-api-sdk)
+[快代理GO-API-SDK](https://github.com/kuaidaili/golang-sdk/tree/master/go-api-sdk)
 
 ## 调用API
 ### api.go
