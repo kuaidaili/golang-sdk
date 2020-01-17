@@ -1,5 +1,9 @@
 # 快代理SDK - Golang
 
+## 快代理API-SDK - Go
+
+[快代理GO-API-SDK](https://github.com/kuaidaili/golang-sdk/go-api-sdk)
+
 ## 调用API
 ### api.go
 使用标准库调用api链接并解析返回内容示例
