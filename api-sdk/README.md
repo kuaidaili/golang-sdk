@@ -21,16 +21,13 @@ go get github.com/kuaidaili/golang-sdk/tree/master/api-sdk
 ## 示例
 以私密代理订单使用为例
 ``` golang
-package examples
-
 import (
-    "fmt"
-    // 此处的导入路径请根据您的GOPATH路径为准
-    // 如可能为: github.com/kuaidaili/golang-sdk/tree/master/api-sdk/kdl/auth
-	"kdl/auth"
-	"kdl/client"
-	"kdl/signtype"
+	"fmt"
 	"log"
+
+	"github.com/kuaidaili/golang-sdk/api-sdk/kdl/auth"
+	"github.com/kuaidaili/golang-sdk/api-sdk/kdl/client"
+	"github.com/kuaidaili/golang-sdk/api-sdk/kdl/signtype"
 )
 
 // 私密代理使用示例
