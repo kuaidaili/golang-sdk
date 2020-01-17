@@ -26,7 +26,7 @@ package examples
 import (
     "fmt"
     // 此处的导入路径请根据您的GOPATH路径为准
-    // 如可能为: github.com/kuaidaili/golang-sdk/api-sdk/kdl/auth
+    // 如可能为: github.com/kuaidaili/golang-sdk/tree/master/api-sdk/kdl/auth
 	"kdl/auth"
 	"kdl/client"
 	"kdl/signtype"
