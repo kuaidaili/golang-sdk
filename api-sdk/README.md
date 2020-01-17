@@ -16,7 +16,7 @@ go get github.com/kuaidaili/golang-sdk/tree/master/api-sdk
 ```
 
 ## 通过源码包安装
-前往 [Github 代码托管地址](https://github.com/kuaidaili/golang-sdk/api-sdk) 下载最新代码，解压后将其放在您的`GOPATH`中
+前往 [Github 代码托管地址](https://github.com/kuaidaili/golang-sdk/tree/master/api-sdk) 下载最新代码，解压后将其放在您的`GOPATH`中
 
 ## 示例
 以私密代理订单使用为例
