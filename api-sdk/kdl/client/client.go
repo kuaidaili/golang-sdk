@@ -27,6 +27,36 @@ func (client Client) GetOrderExpireTime(signType signtype.SignType) (string, err
 	return "", errors.New("KdlError: fail to parse response data: " + fmt.Sprint(res.Data))
 }
 
+//GetProxyAuthorization 获取代理鉴权信息
+// return: 鉴权信息字典
+func (client Client) GetProxyAuthorization(plaintext int, signType signtype.SignType) (map[string]string, error) {
+	ret := make(map[string]string)
+	ep := endpoint.GetProxyAuthorization
+	params := client.getParams(ep, signType, map[string]interface{}{"plaintext": plaintext})
+	res, err := client.getBaseRes("GET", ep, params)
+	if err != nil {
+		return ret, err
+	}
+	if data, ok := res.Data.(map[string]interface{}); ok {
+		if value, ok := data["type"].(string); ok {
+			ret["type"] = value
+		}
+		if value, ok := data["credentials"].(string); ok {
+			ret["credentials"] = value
+		}
+		if plaintext == 1 {
+			if value, ok := data["username"].(string); ok {
+				ret["username"] = value
+			}
+			if value, ok := data["password"].(string); ok {
+				ret["password"] = value
+			}
+		}
+	}
+	return ret, err
+}
+
+
 // GetIPWhitelist 获取订单的IP白名单
 // return: ip白名单slice
 func (client Client) GetIPWhitelist(signType signtype.SignType) ([]string, error) {

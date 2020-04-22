@@ -9,7 +9,6 @@ import (
 	"strconv"
 	"strings"
 	"time"
-
 	"github.com/kuaidaili/golang-sdk/api-sdk/kdl/endpoint"
 	"github.com/kuaidaili/golang-sdk/api-sdk/kdl/signtype"
 	"github.com/kuaidaili/golang-sdk/api-sdk/kdl/utils"

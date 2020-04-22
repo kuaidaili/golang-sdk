@@ -71,4 +71,9 @@ func useDps() {
 		log.Println(err)
 	}
 	fmt.Println("balance: ", balance)
+
+	
+	// 获取订单访问代理IP的鉴权信息
+	proxyAuthorization, err:= client.GetProxyAuthorization(1,signtype.HmacSha1)
+	fmt.Println("proxyAuthorization: ", proxyAuthorization)
 }

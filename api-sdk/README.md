@@ -21,6 +21,8 @@ go get github.com/kuaidaili/golang-sdk/tree/master/api-sdk
 ## 示例
 以私密代理订单使用为例
 ``` golang
+package examples
+
 import (
 	"fmt"
 	"log"
@@ -92,7 +94,13 @@ func useDps() {
 		log.Println(err)
 	}
 	fmt.Println("balance: ", balance)
+
+	
+	// 获取订单访问代理IP的鉴权信息
+	proxyAuthorization, err:= client.GetProxyAuthorization(1,signtype.HmacSha1)
+	fmt.Println("proxyAuthorization: ", proxyAuthorization)
 }
+
 ```
 您可以在examples目录下找到更详细的示例
 

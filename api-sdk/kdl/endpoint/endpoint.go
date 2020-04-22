@@ -32,4 +32,6 @@ const (
 	TpsCurrentIP EndPoint = "tps.kdlapi.com/api/tpscurrentip"
 	// ChangeTpsIP 更改当前隧道代理IP
 	ChangeTpsIP EndPoint = "tps.kdlapi.com/api/changetpsip"
+	//GetProxyAuthorization 获取代理鉴权信息
+	GetProxyAuthorization EndPoint = "dev.kdlapi.com/api/getproxyauthorization"
 )

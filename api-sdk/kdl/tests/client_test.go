@@ -66,3 +66,12 @@ func TestGetIPBalance(t *testing.T) {
 		t.Error(err)
 	}
 }
+
+func TestGetProxyAuthorization(t *testing.T) {
+	balance, err := dpsCountClient.GetProxyAuthorization(signtype.HmacSha1)
+	fmt.Println("proxyauthorization: ", balance)
+	if err != nil {
+		t.Error(err)
+	}
+}
+
