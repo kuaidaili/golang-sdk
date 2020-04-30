@@ -34,4 +34,6 @@ const (
 	ChangeTpsIP EndPoint = "tps.kdlapi.com/api/changetpsip"
 	//GetProxyAuthorization 获取代理鉴权信息
 	GetProxyAuthorization EndPoint = "dev.kdlapi.com/api/getproxyauthorization"
+	//GetTpsIP 获取隧道代理IP
+	GetTpsIp EndPoint = "tps.kdlapi.com/api/gettps"
 )

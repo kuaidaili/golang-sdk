@@ -60,4 +60,14 @@ func useTps() {
 	// 获取订单访问代理IP的鉴权信息
 	proxyAuthorization, err:= client.GetProxyAuthorization(1,signtype.HmacSha1)
 	fmt.Println("proxyAuthorization: ", proxyAuthorization)
+
+
+	//提取隧道代理IP, 参数有: 提取数量、鉴权方式及其他参数(放入map[string]interface{}中, 若无则传入nil)
+	//(具体有哪些其他参数请参考帮助中心: "https://www.kuaidaili.com/doc/api/gettps/")
+	params := map[string]interface{}{"format": "json"}
+	ips, err := client.GetTpsIp(2, signtype.HmacSha1, params)
+	if err != nil {
+		log.Println(err)
+	}
+	fmt.Println("ips: ", ips)
 }
