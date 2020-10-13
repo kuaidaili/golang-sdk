@@ -112,3 +112,31 @@ func (client Client) GetIPBalance(signType signtype.SignType) (int, error) {
 	}
 	return -1, errors.New("KdlError: fail to parse response data: " + fmt.Sprint(res.Data))
 }
+
+//GetUA 获取User Agent
+// return: user agent数组
+func (client Client) GetUA(num int, signType signtype.SignType) ([]string, error){
+	ep := endpoint.GetUA
+	kwargs := make(map[string]interface{})
+	kwargs["num"] = num
+	params := client.getParams(ep, signType, kwargs)
+	res, err := client.getBaseRes("GET", ep, params)
+	if err != nil {
+		return []string{}, err
+	}
+	if data, ok := res.Data.(map[string]interface{}); ok {
+		if count, ok := data["count"].(float64); ok && count == 0 {
+			return []string{}, nil
+		} else if count > 0 {
+			if ua_list, ok := data["ua_list"].([]interface{}); ok {
+				var uaList []string
+				for _, v := range ua_list {
+					uaList = append(uaList, utils.TypeSwitcher(v))
+				}
+				return uaList, nil
+			}
+			return []string{}, nil
+		}
+	}
+	return []string{}, errors.New("KdlError: fail to parse response data: " + fmt.Sprint(res.Data))
+}
