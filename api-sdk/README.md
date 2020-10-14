@@ -52,6 +52,13 @@ func useDps() {
 	}
 	fmt.Println("expire time: ", expireTime)
 
+	// 获取User-Agent, 返回ua列表
+	ua, err := client.GetUA(10 , signtype.HmacSha1)
+	if err != nil {
+		log.Println(err)
+	}
+	fmt.Println("User-Agent: ", ua)
+
 	// 获取ip白名单, 返回ip切片, 类型为[]string
 	ipWhitelist, err := client.GetIPWhitelist(signtype.SIMPLE)
 	if err != nil {
