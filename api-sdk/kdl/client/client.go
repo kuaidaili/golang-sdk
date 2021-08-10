@@ -140,3 +140,47 @@ func (client Client) GetUA(num int, signType signtype.SignType) ([]string, error
 	}
 	return []string{}, errors.New("KdlError: fail to parse response data: " + fmt.Sprint(res.Data))
 }
+
+
+//GetAreaCode 获取指定地区编码
+// return: 地区编码信息字典
+func (client Client) GetAreaCode(area string, signType signtype.SignType) (map[string]string, error){
+	ret := make(map[string]string)
+	ep := endpoint.GetAreaCode
+	kwargs := make(map[string]interface{})
+	kwargs["area"] = area
+	params := client.getParams(ep, signType, kwargs)
+	res, err := client.getBaseRes("GET", ep, params)
+	if err != nil {
+		return ret, err
+	}
+
+	if data, ok := res.Data.(map[string]interface{}); ok {
+		if area_name, ok := data["area_name"].(string); ok {
+			ret["area_name"] = area_name
+		}
+		if area_code, ok := data["area_code"].(string); ok {
+			ret["area_code"] = area_code
+		}
+	}
+	return ret, nil
+}
+
+
+//GetAreaCode 获取账户余额
+// return: 账户余额字符串
+func (client Client) GetAccountBalance(signType signtype.SignType) (string, error){
+	ep := endpoint.GetAccountBalance
+	params := client.getParams(ep, signType, nil)
+	res, err := client.getBaseRes("GET", ep, params)
+	if err != nil {
+		return "", err
+	}
+
+	if data, ok := res.Data.(map[string]interface{}); ok {
+		if balance, ok := data["balance"].(string); ok {
+			return balance, nil
+		}
+	}
+	return "", errors.New("KdlError: fail to parse response data: " + fmt.Sprint(res.Data))
+}

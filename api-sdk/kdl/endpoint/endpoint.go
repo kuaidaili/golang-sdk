@@ -39,4 +39,6 @@ const (
 
 	//工具接口
 	GetUA EndPoint = "dev.kdlapi.com/api/getua"    //获取User Agent
+	GetAreaCode EndPoint = "dev.kdlapi.com/api/getareacode"    //获取指定地区编码
+    GetAccountBalance EndPoint = "dev.kdlapi.com/api/getaccountbalance"    //获取账户余额
 )
