@@ -41,4 +41,11 @@ const (
 	GetUA EndPoint = "dev.kdlapi.com/api/getua"    //获取User Agent
 	GetAreaCode EndPoint = "dev.kdlapi.com/api/getareacode"    //获取指定地区编码
     GetAccountBalance EndPoint = "dev.kdlapi.com/api/getaccountbalance"    //获取账户余额
+
+    // 订单相关
+    CreateOrder EndPoint = "dev.kdlapi.com/api/createorder"   // 创建订单
+    GetOrderInfo EndPoint = "dev.kdlapi.com/api/getorderinfo"  // 获取订单信息
+    SetAutoRenew EndPoint = "dev.kdlapi.com/api/setautorenew"  // 开启/关闭自动续费
+    CloseOrder EndPoint = "dev.kdlapi.com/api/closeorder"  // 关闭订单
+    QueryKpsCity EndPoint = "dev.kdlapi.com/api/querykpscity"  // 查询独享代理城市信息
 )

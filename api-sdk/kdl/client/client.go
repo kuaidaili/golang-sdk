@@ -167,7 +167,7 @@ func (client Client) GetAreaCode(area string, signType signtype.SignType) (map[s
 }
 
 
-//GetAreaCode 获取账户余额
+// GetAreaCode 获取账户余额
 // return: 账户余额字符串
 func (client Client) GetAccountBalance(signType signtype.SignType) (string, error){
 	ep := endpoint.GetAccountBalance
@@ -183,4 +183,63 @@ func (client Client) GetAccountBalance(signType signtype.SignType) (string, erro
 		}
 	}
 	return "", errors.New("KdlError: fail to parse response data: " + fmt.Sprint(res.Data))
+}
+
+
+// CreateOrder 创建订单，自动从账户余额里结算费用
+// return: jsonRes struct
+func (client Client) CreateOrder(product string, pay_type string) (map[string]string, error){
+	ep := endpoint.CreateOrder
+	kwargs := make(map[string]interface{})
+	kwargs["product"] = product
+	kwargs["pay_type"] = pay_type
+	params := client.getParams(ep, signtype.HmacSha1, kwargs)
+	res, err := client.getBaseRes("GET", ep, params)
+	return res, err
+}
+
+
+// GetOrderInfo 获取订单的详细信息
+// return: jsonRes struct
+func (client Client) GetOrderInfo() (map[string]string, error){
+	ep := endpoint.GetOrderInfo
+	kwargs := make(map[string]interface{})
+	params := client.getParams(ep, signtype.HmacSha1, kwargs)
+	res, err := client.getBaseRes("GET", ep, params)
+	return res, err
+}
+
+
+// SetAutoRenew 开启/关闭自动续费
+// return: jsonRes struct
+func (client Client) SetAutoRenew(autorenew string) (map[string]string, error){
+	ep := endpoint.SetAutoRenew
+	kwargs := make(map[string]interface{})
+	kwargs["autorenew"] = autorenew
+	params := client.getParams(ep, signtype.HmacSha1, kwargs)
+	res, err := client.getBaseRes("GET", ep, params)
+	return res, err
+}
+
+
+// CloseOrder 关闭指定订单, 此接口只对按量付费(后付费)订单有效
+// return: jsonRes struct
+func (client Client) CloseOrder() (map[string]string, error){
+	ep := endpoint.CloseOrder
+	kwargs := make(map[string]interface{})
+	params := client.getParams(ep, signtype.HmacSha1, kwargs)
+	res, err := client.getBaseRes("GET", ep, params)
+	return res, err
+}
+
+
+// QueryKpsCity 查询独享代理有哪些城市可供开通。对于IP共享型还可查询到每个城市可开通的IP数量。
+// return: jsonRes struct
+func (client Client) QueryKpsCity(serie string) (map[string]string, error){
+	ep := endpoint.QueryKpsCity
+	kwargs := make(map[string]interface{})
+	kwargs["serie"] = serie
+	params := client.getParams(ep, signtype.HmacSha1, kwargs)
+	res, err := client.getBaseRes("GET", ep, params)
+	return res, err
 }
