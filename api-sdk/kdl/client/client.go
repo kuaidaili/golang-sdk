@@ -56,7 +56,6 @@ func (client Client) GetProxyAuthorization(plaintext int, signType signtype.Sign
 	return ret, err
 }
 
-
 // GetIPWhitelist 获取订单的IP白名单
 // return: ip白名单slice
 func (client Client) GetIPWhitelist(signType signtype.SignType) ([]string, error) {
@@ -115,7 +114,7 @@ func (client Client) GetIPBalance(signType signtype.SignType) (int, error) {
 
 //GetUA 获取User Agent
 // return: user agent数组
-func (client Client) GetUA(num int, signType signtype.SignType) ([]string, error){
+func (client Client) GetUA(num int, signType signtype.SignType) ([]string, error) {
 	ep := endpoint.GetUA
 	kwargs := make(map[string]interface{})
 	kwargs["num"] = num
@@ -141,10 +140,9 @@ func (client Client) GetUA(num int, signType signtype.SignType) ([]string, error
 	return []string{}, errors.New("KdlError: fail to parse response data: " + fmt.Sprint(res.Data))
 }
 
-
 //GetAreaCode 获取指定地区编码
 // return: 地区编码信息字典
-func (client Client) GetAreaCode(area string, signType signtype.SignType) (map[string]string, error){
+func (client Client) GetAreaCode(area string, signType signtype.SignType) (map[string]string, error) {
 	ret := make(map[string]string)
 	ep := endpoint.GetAreaCode
 	kwargs := make(map[string]interface{})
@@ -166,10 +164,9 @@ func (client Client) GetAreaCode(area string, signType signtype.SignType) (map[s
 	return ret, nil
 }
 
-
 // GetAreaCode 获取账户余额
 // return: 账户余额字符串
-func (client Client) GetAccountBalance(signType signtype.SignType) (string, error){
+func (client Client) GetAccountBalance(signType signtype.SignType) (string, error) {
 	ep := endpoint.GetAccountBalance
 	params := client.getParams(ep, signType, nil)
 	res, err := client.getBaseRes("GET", ep, params)
@@ -185,10 +182,9 @@ func (client Client) GetAccountBalance(signType signtype.SignType) (string, erro
 	return "", errors.New("KdlError: fail to parse response data: " + fmt.Sprint(res.Data))
 }
 
-
 // CreateOrder 创建订单，自动从账户余额里结算费用
 // return: jsonRes struct
-func (client Client) CreateOrder(product string, pay_type string) (map[string]string, error){
+func (client Client) CreateOrder(product string, pay_type string) (jsonRes, error) {
 	ep := endpoint.CreateOrder
 	kwargs := make(map[string]interface{})
 	kwargs["product"] = product
@@ -198,10 +194,9 @@ func (client Client) CreateOrder(product string, pay_type string) (map[string]st
 	return res, err
 }
 
-
 // GetOrderInfo 获取订单的详细信息
 // return: jsonRes struct
-func (client Client) GetOrderInfo() (map[string]string, error){
+func (client Client) GetOrderInfo() (jsonRes, error) {
 	ep := endpoint.GetOrderInfo
 	kwargs := make(map[string]interface{})
 	params := client.getParams(ep, signtype.HmacSha1, kwargs)
@@ -209,10 +204,9 @@ func (client Client) GetOrderInfo() (map[string]string, error){
 	return res, err
 }
 
-
 // SetAutoRenew 开启/关闭自动续费
 // return: jsonRes struct
-func (client Client) SetAutoRenew(autorenew string) (map[string]string, error){
+func (client Client) SetAutoRenew(autorenew string) (jsonRes, error) {
 	ep := endpoint.SetAutoRenew
 	kwargs := make(map[string]interface{})
 	kwargs["autorenew"] = autorenew
@@ -221,10 +215,9 @@ func (client Client) SetAutoRenew(autorenew string) (map[string]string, error){
 	return res, err
 }
 
-
 // CloseOrder 关闭指定订单, 此接口只对按量付费(后付费)订单有效
 // return: jsonRes struct
-func (client Client) CloseOrder() (map[string]string, error){
+func (client Client) CloseOrder() (jsonRes, error) {
 	ep := endpoint.CloseOrder
 	kwargs := make(map[string]interface{})
 	params := client.getParams(ep, signtype.HmacSha1, kwargs)
@@ -232,10 +225,9 @@ func (client Client) CloseOrder() (map[string]string, error){
 	return res, err
 }
 
-
 // QueryKpsCity 查询独享代理有哪些城市可供开通。对于IP共享型还可查询到每个城市可开通的IP数量。
 // return: jsonRes struct
-func (client Client) QueryKpsCity(serie string) (map[string]string, error){
+func (client Client) QueryKpsCity(serie string) (jsonRes, error) {
 	ep := endpoint.QueryKpsCity
 	kwargs := make(map[string]interface{})
 	kwargs["serie"] = serie
