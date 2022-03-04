@@ -35,7 +35,7 @@ func main() {
     if err != nil {
         // 请求发生异常
         fmt.Println(err.Error())
-    } else {3
+    } else {
         defer res.Body.Close() //保证最后关闭Body
 
         fmt.Println("status code:", res.StatusCode) // 获取状态码
