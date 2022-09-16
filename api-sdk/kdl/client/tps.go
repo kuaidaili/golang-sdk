@@ -4,9 +4,9 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/kuaidaili/golang-sdk/api-sdk/kdl/endpoint"
-	"github.com/kuaidaili/golang-sdk/api-sdk/kdl/signtype"
-	"github.com/kuaidaili/golang-sdk/api-sdk/kdl/utils"
+	"kdl/endpoint"
+	"kdl/signtype"
+	"kdl/utils"
 )
 
 // TpsCurrentIP 获取隧道当前IP, 仅支持支持换IP周期>=1分钟的隧道代理订单
@@ -42,7 +42,7 @@ func (client Client) ChangeTpsIP(signType signtype.SignType) (string, error) {
 }
 
 //GetTpsIp 获取隧道代理IP, 获取订单对应的隧道代理IP。
-func (client Client)GetTpsIp(num int, signType signtype.SignType,kwargs map[string]interface{}) ([]string, error) {
+func (client Client) GetTpsIp(num int, signType signtype.SignType, kwargs map[string]interface{}) ([]string, error) {
 	ep := endpoint.GetTpsIp
 	if kwargs != nil {
 		kwargs["num"] = num

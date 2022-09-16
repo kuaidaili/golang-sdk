@@ -1,0 +1,6 @@
+*.pyc
+/venv
+.idea
+*.bat
+*.log
+.DS_Store

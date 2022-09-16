@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/kuaidaili/golang-sdk/api-sdk/kdl/signtype"
+	"kdl/signtype"
 )
 
 func TestGetDps(t *testing.T) {

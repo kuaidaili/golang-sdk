@@ -7,13 +7,13 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/kuaidaili/golang-sdk/api-sdk/kdl/utils"
+	"kdl/utils"
 )
 
-// Auth 用于保存用户orderid、apiKey，以及计算签名
+// Auth 用于保存用户SecretID、SecretKey，以及计算签名
 type Auth struct {
-	OrderID string
-	APIKey  string
+	SecretID  string
+	SecretKey string
 }
 
 // GetStringToSign 生成签名原文字符串
@@ -34,7 +34,7 @@ func (auth Auth) GetStringToSign(method string, endpoint string, params map[stri
 
 // SignStr 计算签名串
 func (auth Auth) SignStr(rawStr string) string {
-	key := []byte(auth.APIKey)
+	key := []byte(auth.SecretKey)
 	hash := hmac.New(sha1.New, key)
 	hash.Write([]byte(rawStr))
 	sig := base64.StdEncoding.EncodeToString([]byte(string(hash.Sum(nil))))

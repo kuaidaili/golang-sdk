@@ -9,18 +9,19 @@ import (
 	"strconv"
 	"strings"
 	"time"
-	"github.com/kuaidaili/golang-sdk/api-sdk/kdl/endpoint"
-	"github.com/kuaidaili/golang-sdk/api-sdk/kdl/signtype"
-	"github.com/kuaidaili/golang-sdk/api-sdk/kdl/utils"
+
+	"kdl/endpoint"
+	"kdl/signtype"
+	"kdl/utils"
 )
 
 // getParams 构造请求参数, 返回参数map
 func (client Client) getParams(ep endpoint.EndPoint, signType signtype.SignType, kwargs map[string]interface{}) map[string]interface{} {
 	params := make(map[string]interface{})
-	if client.Auth.OrderID == "" {
-		panic("order id is required for auth")
+	if client.Auth.SecretID == "" {
+		panic("SecretID is required for auth")
 	}
-	params["orderid"] = client.Auth.OrderID
+	params["secret_id"] = client.Auth.SecretID
 	params["sign_type"] = signType
 	for k, v := range kwargs {
 		params[k] = v
@@ -28,11 +29,13 @@ func (client Client) getParams(ep endpoint.EndPoint, signType signtype.SignType,
 	if signType == "" {
 		return params
 	}
-	if client.Auth.APIKey == "" {
-		panic("api key is required for signature")
+	if client.Auth.SecretKey == "" {
+		panic("SecretKey is required for signature")
 	}
 	if signType == signtype.SIMPLE {
-		params["signature"] = client.Auth.APIKey
+		params["signature"] = client.Auth.SecretKey
+	} else if signType == signtype.Token {
+		params["signature"] = client.GetSecretToken()
 	} else if signType == signtype.HmacSha1 {
 		params["timestamp"] = time.Now().Unix()
 		var rawStr string
@@ -109,6 +112,7 @@ func httpPost(_url string, body map[string]interface{}) (*http.Response, error) 
 		form.Add(k, utils.TypeSwitcher(v))
 	}
 	req, err := http.NewRequest(http.MethodPost, _url, strings.NewReader(form.Encode()))
+	req.Header.Set("Content-Type", "application/x-www-form-urlencoded") // 设置post数据类型
 	if err != nil {
 		return nil, errors.New("KdlError: new request is fail")
 	}

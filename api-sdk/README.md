@@ -4,10 +4,10 @@
 # 依赖环境
 1. Golang 1.10及以上
 2. 从[快代理](https://www.kuaidaili.com)购买相应产品
-3. [获取订单的`orderId`和`apiKey`](https://www.kuaidaili.com/usercenter/api/settings/)
+3. [获取订单的`secret_id`和`secret_key`](https://www.kuaidaili.com/usercenter/api/settings/)
 
 # 获取安装
-安装 Golang SDK 前，请先获取订单对应的订单号和apiKey。 订单号是用于标识订单，apiKey 是用于加密签名字符串和服务器端验证签名字符串的密钥。apiKey 必须严格保管，避免泄露。
+安装 Golang SDK 前，请先获取订单对应的secret_id和secret_key。 secret_id是用于标识订单，secret_key必须严格保管，避免泄露。
 
 ## 通过go get安装(推荐)
 您可以通过`go get`将SDK安装到您的`GOPATH`中：
@@ -42,7 +42,7 @@ import (
 // 所有返回值都包括两个值，第一个为目标值，第二个为error类型, 值为nil说明成功，不为nil说明失败
 
 func useDps() {
-	auth := auth.Auth{OrderID: "test_order_id", APIKey: "test_api_key"}
+	auth := auth.Auth{SecretID: "secret_id", SecretKey: "secret_key"}
 	client := client.Client{Auth: auth}
 
 	// 获取订单到期时间, 返回时间字符串

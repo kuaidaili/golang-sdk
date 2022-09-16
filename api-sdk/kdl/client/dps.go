@@ -5,9 +5,9 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/kuaidaili/golang-sdk/api-sdk/kdl/endpoint"
-	"github.com/kuaidaili/golang-sdk/api-sdk/kdl/signtype"
-	"github.com/kuaidaili/golang-sdk/api-sdk/kdl/utils"
+	"kdl/endpoint"
+	"kdl/signtype"
+	"kdl/utils"
 )
 
 // GetDps 获取私密代理

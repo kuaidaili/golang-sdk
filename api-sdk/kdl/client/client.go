@@ -3,11 +3,15 @@ package client
 import (
 	"errors"
 	"fmt"
+	"io/ioutil"
+	"os"
+	"strconv"
 	"strings"
+	"time"
 
-	"github.com/kuaidaili/golang-sdk/api-sdk/kdl/endpoint"
-	"github.com/kuaidaili/golang-sdk/api-sdk/kdl/signtype"
-	"github.com/kuaidaili/golang-sdk/api-sdk/kdl/utils"
+	"kdl/endpoint"
+	"kdl/signtype"
+	"kdl/utils"
 )
 
 // GetOrderExpireTime 获取订单过期时间
@@ -234,4 +238,62 @@ func (client Client) QueryKpsCity(serie string) (jsonRes, error) {
 	params := client.getParams(ep, signtype.HmacSha1, kwargs)
 	res, err := client.getBaseRes("GET", ep, params)
 	return res, err
+}
+
+func (client Client) _ReadSecretToken() string {
+	var secret_token string
+	f, err := os.Open(SecretPath)
+	if err != nil {
+		f.Close()
+		panic("fail to read .secret")
+	}
+	_byte, _ := ioutil.ReadAll(f)
+	secretSlice := strings.Split(string(_byte), "|")
+	secret_token = secretSlice[0]
+	expire, _ := strconv.ParseInt(secretSlice[1], 10, 64)
+	_time, _ := strconv.ParseInt(secretSlice[2], 10, 64)
+	if (_time + expire - 3*60) < time.Now().Unix() { // 3分钟过期时重新获取
+		secret_token, expire, _time = client._GetSecretToken()
+		f, err := os.OpenFile(SecretPath, os.O_WRONLY|os.O_CREATE, 0666)
+		if err != nil {
+			f.Close()
+			panic("fail to write .secret")
+		}
+		f.WriteString(fmt.Sprintf("%v|%v|%v", secret_token, expire, _time))
+	}
+	return secret_token
+}
+
+func (client Client) _GetSecretToken() (string, int64, int64) {
+	ep := endpoint.GetSecretToken
+	kwargs := make(map[string]interface{})
+	kwargs["secret_id"] = client.Auth.SecretID
+	kwargs["secret_key"] = client.Auth.SecretKey
+	params := client.getParams(ep, signtype.HmacSha1, kwargs)
+	res, _ := client.getBaseRes("POST", ep, params)
+	secret_token := res.Data.(map[string]interface{})["secret_token"].(string)
+	expire_float64, _ := res.Data.(map[string]interface{})["expire"].(float64)
+	expire := int64(expire_float64)
+	_time := time.Now().Unix() // 秒级时间戳
+	return secret_token, expire, _time
+}
+
+// GetSecretToken 获取密钥令牌
+// return: jsonRes struct
+func (client Client) GetSecretToken() string {
+	var secret_token string
+	if _, err := os.Stat(SecretPath); err == nil {
+		// 存在secret文件
+		secret_token = client._ReadSecretToken()
+	} else {
+		tmp_secret_token, expire, _time := client._GetSecretToken()
+		secret_token = tmp_secret_token
+		f, err := os.OpenFile(SecretPath, os.O_WRONLY|os.O_CREATE, 0666)
+		if err != nil {
+			f.Close()
+			panic("fail to write .secret")
+		}
+		f.WriteString(fmt.Sprintf("%v|%v|%v", secret_token, expire, _time))
+	}
+	return secret_token
 }
