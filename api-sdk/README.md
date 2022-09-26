@@ -35,8 +35,8 @@ import (
 // 私密代理使用示例
 
 // 接口鉴权说明：
-// 接口鉴权方式为必填项, 目前支持的鉴权方式有"simple" 和 "hmacsha1"两种
-// 可选值为signtype.SIMPLE和signtype.HmacSha1 或直接传"simple"或"hmacsha1"
+// 接口鉴权方式为必填项, 目前支持的鉴权方式有"token" 和 "hmacsha1"两种
+// 可选值为signtype.TOKEN和signtype.HmacSha1 或直接传"token"或"hmacsha1"
 
 // 返回值说明:
 // 所有返回值都包括两个值，第一个为目标值，第二个为error类型, 值为nil说明成功，不为nil说明失败
@@ -60,7 +60,7 @@ func useDps() {
 	fmt.Println("User-Agent: ", ua)
 
 	// 获取ip白名单, 返回ip切片, 类型为[]string
-	ipWhitelist, err := client.GetIPWhitelist(signtype.SIMPLE)
+	ipWhitelist, err := client.GetIPWhitelist(signtype.Token)
 	if err != nil {
 		log.Println(err)
 	}
@@ -89,7 +89,7 @@ func useDps() {
 	fmt.Println("valids: ", valids)
 
 	// 获取私密代理剩余时间(单位为秒), 返回map[string]string, ip:seconds
-	seconds, err := client.GetDpsValidTime(ips, signtype.SIMPLE)
+	seconds, err := client.GetDpsValidTime(ips, signtype.Token)
 	if err != nil {
 		log.Println(err)
 	}

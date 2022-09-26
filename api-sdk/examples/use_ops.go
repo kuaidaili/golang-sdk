@@ -20,7 +20,7 @@ import (
 // 所有返回值都包括两个值，第一个为目标值，第二个为error类型, 值为nil说明成功，不为nil说明失败
 
 func useOps() {
-	auth := auth.Auth{OrderID: "test_order_id", APIKey: "test_api_key"}
+	auth := auth.Auth{SecretID: "secret_id", SecretKey: "secret_key"}
 	client := client.Client{Auth: auth}
 
 	// 获取订单到期时间, 返回时间字符串

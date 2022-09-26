@@ -19,7 +19,7 @@ import (
 // 所有返回值都包括两个值，第一个为目标值，第二个为error类型, 值为nil说明成功，不为nil说明失败
 
 func useTps() {
-	auth := auth.Auth{OrderID: "test_order_id", APIKey: "test_api_key"}
+	auth := auth.Auth{SecretID: "secret_id", SecretKey: "secret_key"}
 	client := client.Client{Auth: auth}
 
 	// 获取订单到期时间, 返回时间字符串
@@ -56,11 +56,9 @@ func useTps() {
 	}
 	fmt.Println("new_ip: ", newIP)
 
-	
 	// 获取订单访问代理IP的鉴权信息
-	proxyAuthorization, err:= client.GetProxyAuthorization(1,signtype.HmacSha1)
+	proxyAuthorization, err := client.GetProxyAuthorization(1, signtype.HmacSha1)
 	fmt.Println("proxyAuthorization: ", proxyAuthorization)
-
 
 	//提取隧道代理IP, 参数有: 提取数量、鉴权方式及其他参数(放入map[string]interface{}中, 若无则传入nil)
 	//(具体有哪些其他参数请参考帮助中心: "https://www.kuaidaili.com/doc/api/gettps/")

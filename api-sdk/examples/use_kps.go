@@ -19,7 +19,7 @@ import (
 // 所有返回值都包括两个值，第一个为目标值，第二个为error类型, 值为nil说明成功，不为nil说明失败
 
 func useKps() {
-	auth := auth.Auth{OrderID: "test_order_id", APIKey: "test_api_key"}
+	auth := auth.Auth{SecretID: "secret_id", SecretKey: "secret_key"}
 	client := client.Client{Auth: auth}
 
 	// 获取订单到期时间, 返回时间字符串
@@ -51,8 +51,7 @@ func useKps() {
 	}
 	fmt.Println("ips: ", ips)
 
-	
 	// 获取订单访问代理IP的鉴权信息
-	proxyAuthorization, err:= client.GetProxyAuthorization(1,signtype.HmacSha1)
+	proxyAuthorization, err := client.GetProxyAuthorization(1, signtype.HmacSha1)
 	fmt.Println("proxyAuthorization: ", proxyAuthorization)
 }
