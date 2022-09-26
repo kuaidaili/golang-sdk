@@ -13,7 +13,7 @@ import (
 func main() {
 
     // api链接
-    api_url := "http://svip.kdlapi.com/api/getproxy/?orderid=96518362xxxxxx&num=100&protocol=1&method=2&an_an=1&an_ha=1&sep=1"
+    api_url := "http://svip.kdlapi.com/api/getproxy/?secret_id=o1fjh1re9o28876h7c08&signature=xxxxx&num=100&protocol=1&method=2&an_an=1&an_ha=1&sep=1"
 
     // 请求api链接
     req, _ := http.NewRequest("GET", api_url, nil)
