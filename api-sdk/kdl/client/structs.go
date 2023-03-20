@@ -1,6 +1,6 @@
 package client
 
-import "kdl/auth"
+import "github.com/kuaidaili/golang-sdk/api-sdk/kdl/auth"
 
 // SecretToken信息存放路径
 const SecretPath = ".secret"

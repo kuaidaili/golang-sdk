@@ -4,9 +4,9 @@ import (
 	"fmt"
 	"testing"
 
-	"kdl/auth"
-	"kdl/client"
-	"kdl/signtype"
+	"github.com/kuaidaili/golang-sdk/api-sdk/kdl/auth"
+	"github.com/kuaidaili/golang-sdk/api-sdk/kdl/client"
+	"github.com/kuaidaili/golang-sdk/api-sdk/kdl/signtype"
 )
 
 var secret_id = ""

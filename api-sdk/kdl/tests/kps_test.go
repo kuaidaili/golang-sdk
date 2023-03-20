@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"testing"
 
-	"kdl/signtype"
+	"github.com/kuaidaili/golang-sdk/api-sdk/kdl/signtype"
 )
 
 func TestGetKps(t *testing.T) {

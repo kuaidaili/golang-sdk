@@ -5,8 +5,8 @@ import (
 	"strings"
 	"testing"
 
-	"kdl/opslevel"
-	"kdl/signtype"
+	"github.com/kuaidaili/golang-sdk/api-sdk/kdl/opslevel"
+	"github.com/kuaidaili/golang-sdk/api-sdk/kdl/signtype"
 )
 
 func TestGetProxy(t *testing.T) {

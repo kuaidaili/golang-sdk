@@ -4,9 +4,9 @@ import (
 	"errors"
 	"fmt"
 
-	"kdl/endpoint"
-	"kdl/signtype"
-	"kdl/utils"
+	"github.com/kuaidaili/golang-sdk/api-sdk/kdl/endpoint"
+	"github.com/kuaidaili/golang-sdk/api-sdk/kdl/signtype"
+	"github.com/kuaidaili/golang-sdk/api-sdk/kdl/utils"
 )
 
 // TpsCurrentIP 获取隧道当前IP, 仅支持支持换IP周期>=1分钟的隧道代理订单

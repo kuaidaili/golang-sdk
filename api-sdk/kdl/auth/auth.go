@@ -7,7 +7,7 @@ import (
 	"sort"
 	"strings"
 
-	"kdl/utils"
+	"github.com/kuaidaili/golang-sdk/api-sdk/kdl/utils"
 )
 
 // Auth 用于保存用户SecretID、SecretKey，以及计算签名
